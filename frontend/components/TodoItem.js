@@ -9,9 +9,18 @@ export default function TodoItem({ item }) {
     title: item.title,
     completed: item.completed,
   })
+  const [isChecked, setIsChecked] = useState(item.completed)
 
   const handleCheckboxChange = async () => {
     const updatedItem = { ...item, completed: !item.completed }
+    setIsChecked(!isChecked)
+    dispatch(
+      updateItem({
+        id: item.id,
+        newTitle: updatedItem.title,
+        newCompleted: updatedItem.completed,
+      })
+    );
     try {
       const response = await fetch(
         `http://127.0.0.1:8000/api/items/${item.id}/`,
@@ -44,8 +53,9 @@ export default function TodoItem({ item }) {
 
   const handleInputChange = (event) => {
     const { name, value } = event.target
-    setEditFormData({ ...editFormData, [name]: value })
+    setEditFormData({ ...editFormData, [name]: value,completed: isChecked})
   }
+  
 
   const handleSaveEdit = async (event) => {
     event.preventDefault()
@@ -71,6 +81,7 @@ export default function TodoItem({ item }) {
         })
       )
       setIsEditing(false)
+     
     } catch (error) {
       console.error("Failed to update item:", error)
     }
@@ -104,16 +115,16 @@ export default function TodoItem({ item }) {
       className={`flex items-center justify-between p-4 rounded-lg ${
         item.completed ? "bg-[#EBD9B4]" : "bg-white"
       }`}
-    >
-      <label className="custom-checkbox-label mr-4">
-        <input
-          type="checkbox"
-          checked={item.completed}
-          onChange={handleCheckboxChange}
-          className="hidden"
-        />
-        <span className="custom-checkbox"></span>
-      </label>
+    >{!isEditing &&    <label className="custom-checkbox-label mr-4">
+    <input
+      type="checkbox"
+      checked={item.completed}
+      onChange={handleCheckboxChange}
+      className="hidden"
+    />
+    <span className="custom-checkbox"></span>
+  </label>}
+   
       {isEditing ? (
         <form
           onSubmit={handleSaveEdit}
