@@ -26,13 +26,13 @@ Ce que vous avez besoin pour installer le logiciel :
 ### Backend (Django)
 
 # Cloner le dépôt
-git clone https://github.com/votre-username/votre-repo.git
-cd votre-repo
+git clone https://github.com/tugcekoksal/ProjetTest.git
+cd ProjetTest
 
 # Configurer le backend
 cd backend
 python -m venv env
-source env/bin/activate  # Sur Windows utilisez `env\Scripts\activate`
+source env/bin/activate 
 pip install -r requirements.txt
 python manage.py migrate
 python manage.py runserver
