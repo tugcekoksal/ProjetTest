@@ -31,16 +31,22 @@ export default function Todo() {
     fetchItems()
   }, [dispatch])
 
+
   const getFilteredItems = () => {
+    let sortedItems = [...items].sort((a, b) => {
+      return (a.completed === b.completed) ? 0 : a.completed ? 1 : -1;
+    });
+  
     switch (filter) {
       case "active":
-        return items.filter((item) => !item.completed)
+        return sortedItems.filter((item) => !item.completed);
       case "completed":
-        return items.filter((item) => item.completed)
+        return sortedItems.filter((item) => item.completed);
       default:
-        return items
+        return sortedItems;
     }
-  }
+  };
+  
 
   const handleClearCompleted = async () => {
     const completedItems = items.filter((item) => item.completed)

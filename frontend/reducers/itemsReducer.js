@@ -4,7 +4,7 @@ import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
   items: [],
-  // filteredItems: [],
+
   sortKey: 'name',
 };
 
@@ -37,20 +37,12 @@ const itemsSlice = createSlice({
         state.items[index][name] = value;
       }
     },
-    // filterItems: (state, action) => {
-    //   state.filteredItems = state.items.filter(item => item.condition === action.payload);
-    // },
-    // sortItems: (state) => {
-    //   state.items.sort((a, b) => (a[state.sortKey] > b[state.sortKey] ? 1 : -1));
-    // },
-    // updateSortKey: (state, action) => {
-    //   state.sortKey = action.payload;
-    // }
+
   }
 });
 
 export const { 
-  setItems, addItem, removeItem, updateItem, startEditing, changeItemField, filterItems, sortItems, updateSortKey 
+  setItems, addItem, removeItem, updateItem, startEditing, changeItemField, 
 } = itemsSlice.actions;
 
 export default itemsSlice.reducer;
