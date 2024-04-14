@@ -41,16 +41,7 @@ export default function AddItem({onSubmit}) {
                 />
             </div>
             <div className="mb-6 flex items-center">
-                <input
-                    type="checkbox"
-                    id="completed"
-                    checked={completed}
-                    onChange={e => setCompleted(e.target.checked)}
-                    className="h-4 w-4 text-dark-slate focus:ring-indigo-500 border-gray-300 rounded"
-                />
-                <label htmlFor="completed" className="ml-2 block text-sm text-gray-900">
-                    Completed
-                </label>
+         
             </div>
             <button type="submit" className="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium  text-white bg-dark-slate hover:bg-[#597a7b] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:bg-[#597a7b]">
                 Add Item
