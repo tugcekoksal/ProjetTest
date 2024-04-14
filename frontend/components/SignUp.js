@@ -47,7 +47,11 @@ function Signup({ onSwitchToLogin }) {
 
   return (
     <div className="flex flex-col mx-auto my-20 max-w-lg">
-      <form onSubmit={handleSignup} className="space-y-6">
+      <div style={{ display: "none" }}>
+        <input type="text" autoComplete="username" />
+        <input type="password" autoComplete="new-password" />
+      </div>
+      <form onSubmit={handleSignup} className="space-y-6"     autoComplete='off'>
         <label className="block">
           <span className="text-gray-700">Username:</span>
           <input
@@ -55,6 +59,7 @@ function Signup({ onSwitchToLogin }) {
             value={username}
             onChange={e => setUsername(e.target.value)}
             required
+            autoComplete="new-username"
             className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
           />
                     {errors.username && <p className="text-red-500 text-xs italic">{errors.username}</p>}
