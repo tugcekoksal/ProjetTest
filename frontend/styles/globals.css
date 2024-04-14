@@ -1,0 +1,61 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+body {
+  font-family: 'Roboto', sans-serif;
+  background-color: #FEFAF6;
+  color: #638889;
+}
+
+.bg-cream { background-color: #F9EFDB; }
+.bg-beige { background-color: #FEFAF6; }
+.bg-muted-green { background-color: #FBC687; }
+.bg-dark-slate { background-color: #638889; }
+.btn-hover {
+  transition: all 0.3s ease;
+  background-color: #597a7b;
+}
+
+.text-cream { color: #F9EFDB; }
+.text-beige { color: #FEFAF6; }
+.text-muted-green { color: #9DBC98; }
+.text-dark-slate { color: #638889; }
+
+.bg-image-div {
+  background-image: url('/background.jpg'); 
+  background-size: cover; 
+  background-position:  center; 
+}
+.custom-checkbox {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  margin-right: 10px;
+  border-radius: 50%;
+  position: relative;
+  border: 2px solid #9CAFAA;
+  cursor: pointer;
+}
+
+.custom-checkbox::after {
+  content: '';
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: #9CAFAA;
+  transform: scale(0);
+  transition: transform 0.2s ease-in-out;
+}
+
+.custom-checkbox input[type="checkbox"] {
+  visibility: hidden;
+}
+
+.custom-checkbox input[type="checkbox"]:checked + .custom-checkbox::after {
+  transform: scale(1);
+}
